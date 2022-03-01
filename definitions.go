@@ -78,4 +78,5 @@ type AddressInformation struct {
 	Name        string `json:"name"`         // This is the name of the user (public profile)
 	PrivateKey  string `json:"private_key"`  // PrivateKey hex encoded
 	PubKey      string `json:"pubkey"`       // PublicKey hex encoded
+	KeyFile     string `json:"keyfile"`      // Encrypted Keyfile hex encoded
 }

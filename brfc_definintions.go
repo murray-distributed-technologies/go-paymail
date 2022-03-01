@@ -17,6 +17,8 @@ const (
 	BRFCSFPAuthoriseAction             = "95dddb461bff"       // more info: https://docs.moneybutton.com/docs/sfp/paymail-10-sfp-authorise.html
 	BRFCSFPBuildAction                 = "189e32d93d28"       // more info: https://docs.moneybutton.com/docs/sfp/paymail-09-sfp-build.html
 	BRFCVerifyPublicKeyOwner           = "a9f510c16bde"       // more info: http://bsvalias.org/05-verify-public-key-owner.html
+	BRFCKeyfile                        = "keyfile"            // more info: https://github.com/openspv/sbw-specs/sbw-004-keyfile.md"
+	BRFCKeyfileAlternate               = "3a37773637ec"       // more info: https://github.com/openspv/sbw-specs/sbw-004-keyfile.md
 )
 
 // BRFCKnownSpecifications is a running list of all known BRFC specifications
@@ -188,6 +190,14 @@ const BRFCKnownSpecifications = `
    "title": "P2P Payment Destination with Tokens Support",
    "url": "https://docs.moneybutton.com/docs/paymail/paymail-11-p2p-payment-destination-tokens.html",
    "version": "1"
+  },
+  {
+   "author": "Murray Distributed Technologies",
+   "id": "keyfile",
+   "title": "Encrypted Keyfile for Authentication",
+   "url": "https://github.com/openspv/sbw-specs/sbw004-keyfile.md
+   "version": "1"
   }
+
 ]
 `
