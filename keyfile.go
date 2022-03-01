@@ -89,12 +89,7 @@ func (c *Client) GetKeyfile(keyfileURL, alias, domain string) (response *Keyfile
 		return
 	}
 
-	// Check the Keyfile encoding (?)
-	//if len(response.PubKey) == 0 {
-	//	err = fmt.Errorf("pki response is missing a PubKey value")
-	//} else if len(response.PubKey) != PubKeyLength {
-	//	err = fmt.Errorf("returned pubkey is not the required length of %d, got: %d", PubKeyLength, len(response.PubKey))
-	//}
+	// TODO: Check the Keyfile hex encoding
 
 	return
 }
