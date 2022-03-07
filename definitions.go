@@ -70,13 +70,13 @@ type ServerError struct {
 
 // AddressInformation is an internal struct for paymail addresses and their corresponding information
 type AddressInformation struct {
-	Alias       string `json:"alias"`        // Alias or handle of the paymail
-	Avatar      string `json:"avatar"`       // This is the url of the user (public profile)
-	Domain      string `json:"domain"`       // Domain of the paymail
-	ID          string `json:"id"`           // Global unique identifier
-	LastAddress string `json:"last_address"` // This is used as a temp address for now (should be via xPub)
-	Name        string `json:"name"`         // This is the name of the user (public profile)
-	PrivateKey  string `json:"private_key"`  // PrivateKey hex encoded
-	PubKey      string `json:"pubkey"`       // PublicKey hex encoded
-	KeyFile     string `json:"keyfile"`      // Encrypted Keyfile hex encoded
+	Alias             string `json:"alias"`             // Alias or handle of the paymail
+	Avatar            string `json:"avatar"`            // This is the url of the user (public profile)
+	Domain            string `json:"domain"`            // Domain of the paymail
+	ID                string `json:"id"`                // Global unique identifier
+	LastAddress       string `json:"last_address"`      // This is used as a temp address for now (should be via xPub)
+	Name              string `json:"name"`              // This is the name of the user (public profile)
+	PrivateKey        string `json:"private_key"`       // PrivateKey hex encoded
+	PubKey            string `json:"pubkey"`            // PublicKey hex encoded
+	AuthenticationURL string `json:"authenticationURL"` // URL endpoint for authentication
 }

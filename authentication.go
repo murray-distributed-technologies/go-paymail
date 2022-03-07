@@ -12,31 +12,30 @@ Default Response:
 {
   "bsvalias": "1.0",
   "handle": "<alias>@<domain>.<tld>",
-  "keyfile": "..."
+  "authenticationURL": "..."
 }
 */
 
-// PKIResponse is the result returned
-type KeyfileResponse struct {
+// AuthenticationResponse is the result returned
+type AuthenticationResponse struct {
 	StandardResponse
-	KeyfilePayload
+	AuthenticationPayload
 }
 
-// PKIPayload is the payload from the response
-type KeyfilePayload struct {
-	BsvAlias string `json:"bsvalias"` // Version of Paymail
-	Handle   string `json:"handle"`   // The <alias>@<domain>.<tld>
-	Keyfile  string `json:"keyfile"`  // The encrypted keyfile
+// AuthenticationPayload is the payload from the response
+type AuthenticationPayload struct {
+	BsvAlias          string `json:"bsvalias"`          // Version of Paymail
+	Handle            string `json:"handle"`            // The <alias>@<domain>.<tld>
+	AuthenticationURL string `json:"authenticationURL"` // The URL for the authentication endpoint
 }
 
-// GetKeyfile will return a valid Keyfile response for a given alias@domain.tld
+// GetAuthenticationURL will return a valid authentication endpoint url for a given alias@domain.tld
 //
-// Specs: https://github.com/openspv/openspv/blob/master/openspv-js/openspv-keyfile/src/index.mjs
-func (c *Client) GetKeyfile(keyfileURL, alias, domain string) (response *KeyfileResponse, err error) {
+func (c *Client) GetAuthenticationURL(authURL, alias, domain string) (response *AuthenticationResponse, err error) {
 
 	// Require a valid url
-	if len(keyfileURL) == 0 || !strings.Contains(keyfileURL, "https://") {
-		err = fmt.Errorf("invalid url: %s", keyfileURL)
+	if len(authURL) == 0 || !strings.Contains(authURL, "https://") {
+		err = fmt.Errorf("invalid url: %s", authURL)
 		return
 	}
 
@@ -51,7 +50,7 @@ func (c *Client) GetKeyfile(keyfileURL, alias, domain string) (response *Keyfile
 
 	// Set the base url and path, assuming the url is from the prior GetCapabilities() request
 	// https://<host-discovery-target>/{alias}@{domain.tld}/id
-	reqURL := replaceAliasDomain(keyfileURL, alias, domain)
+	reqURL := replaceAliasDomain(authURL, alias, domain)
 
 	// Fire the GET request
 	var resp StandardResponse
@@ -60,7 +59,7 @@ func (c *Client) GetKeyfile(keyfileURL, alias, domain string) (response *Keyfile
 	}
 
 	// Start the response
-	response = &KeyfileResponse{StandardResponse: resp}
+	response = &AuthenticationResponse{StandardResponse: resp}
 
 	// Test the status code (200 or 304 is valid)
 	if response.StatusCode != http.StatusOK && response.StatusCode != http.StatusNotModified {
@@ -85,11 +84,10 @@ func (c *Client) GetKeyfile(keyfileURL, alias, domain string) (response *Keyfile
 
 	// Check basic requirements (handle should match our alias@domain.tld)
 	if response.Handle != alias+"@"+domain {
-		err = fmt.Errorf("keyfile response handle %s does not match paymail address: %s", response.Handle, alias+"@"+domain)
+		err = fmt.Errorf("auth response handle %s does not match paymail address: %s", response.Handle, alias+"@"+domain)
 		return
 	}
 
-	// TODO: Check the Keyfile hex encoding
-
+	// TODO: Check Authentication URL
 	return
 }

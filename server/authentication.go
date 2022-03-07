@@ -8,10 +8,10 @@ import (
 	"github.com/tonicpow/go-paymail"
 )
 
-// showPKI will return the public key information for the corresponding paymail address
+// getAuthenticationEndpoint will return the authentication URL for the corresponding paymail address
 //
 // Specs: http://bsvalias.org/03-public-key-infrastructure.html
-func (c *Configuration) getEncryptedKeyfile(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+func (c *Configuration) getAuthenticationEndpoint(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
 	// Get the params & paymail address submitted via URL request
 	params := apirouter.GetParams(req)
@@ -41,9 +41,9 @@ func (c *Configuration) getEncryptedKeyfile(w http.ResponseWriter, req *http.Req
 	}
 
 	// Return the response
-	apirouter.ReturnResponse(w, req, http.StatusOK, &paymail.KeyFilePayload{
-		BsvAlias: c.BSVAliasVersion,
-		Handle:   address,
-		KeyFile:  foundPaymail.KeyFile,
+	apirouter.ReturnResponse(w, req, http.StatusOK, &paymail.AuthenticationPayload{
+		BsvAlias:               c.BSVAliasVersion,
+		Handle:                 address,
+		AuthenticationEndpoint: foundPaymail.AuthenticationURL,
 	})
 }
