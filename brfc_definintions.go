@@ -196,7 +196,7 @@ const BRFCKnownSpecifications = `
    "author": "Murray Distributed Technologies",
    "id": "authentication",
    "title": "Endpoint for Authentication",
-   "url": "https://github.com/openspv/sbw-specs/sbw-2121-authentication-brfc.md
+   "url": "https://github.com/openspv/sbw-specs/sbw-2121-authentication-brfc.md",
    "version": "1"
   }
 
