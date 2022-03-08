@@ -80,3 +80,9 @@ type AddressInformation struct {
 	PubKey            string `json:"pubkey"`            // PublicKey hex encoded
 	AuthenticationURL string `json:"authenticationURL"` // URL endpoint for authentication
 }
+
+// AuthenticationInformation is a struct for paymail address authentication URLs
+type AuthenticationInformation struct {
+	PaymailAddress string `json:"paymailAddress"`
+	URL            string `json:"url"`
+}

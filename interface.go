@@ -14,6 +14,7 @@ type ClientInterface interface {
 	CheckSSL(host string) (valid bool, err error)
 	GetBRFCs() []*BRFCSpec
 	GetCapabilities(target string, port int) (response *CapabilitiesResponse, err error)
+	GetAuthenticationURL(authURL, alias, domain string) (response *AuthenticationResponse, err error)
 	GetOptions() *ClientOptions
 	GetP2PPaymentDestination(p2pURL, alias, domain string, paymentRequest *PaymentRequest) (response *PaymentDestinationResponse, err error)
 	GetPKI(pkiURL, alias, domain string) (response *PKIResponse, err error)

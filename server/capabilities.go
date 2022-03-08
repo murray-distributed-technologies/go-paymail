@@ -18,6 +18,7 @@ func GenericCapabilities(bsvAliasVersion string, senderValidation bool) *paymail
 			paymail.BRFCPublicProfile:        "/public-profile/{alias}@{domain.tld}",
 			paymail.BRFCSenderValidation:     senderValidation,
 			paymail.BRFCVerifyPublicKeyOwner: "/verify-pubkey/{alias}@{domain.tld}/{pubkey}",
+			paymail.BRFCAuthentication:       "/id/{alias}@domain.tld/authentication",
 		},
 	}
 }

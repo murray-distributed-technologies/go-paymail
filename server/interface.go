@@ -33,4 +33,10 @@ type PaymailServiceProvider interface {
 		p2pTx *paymail.P2PTransaction,
 		metaData *RequestMetadata,
 	) (*paymail.P2PTransactionPayload, error)
+
+	GetAuthenticationURL(
+		ctx context.Context,
+		alias, domain string,
+		metaData *RequestMetadata,
+	) (*paymail.AuthenticationPayload, error)
 }

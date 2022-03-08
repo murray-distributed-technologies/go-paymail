@@ -31,19 +31,19 @@ func (c *Configuration) getAuthenticationEndpoint(w http.ResponseWriter, req *ht
 	md := CreateMetadata(req, alias, domain, "")
 
 	// Get from the data layer
-	foundPaymail, err := c.actions.GetPaymailByAlias(req.Context(), alias, domain, md)
+	authInfo, err := c.actions.GetAuthenticationURL(req.Context(), alias, domain, md)
 	if err != nil {
-		ErrorResponse(w, req, ErrorFindingPaymail, err.Error(), http.StatusExpectationFailed)
+		ErrorResponse(w, req, ErrorGettingAuthenticationUrl, err.Error(), http.StatusExpectationFailed)
 		return
-	} else if foundPaymail == nil {
+	} else if authInfo == nil {
 		ErrorResponse(w, req, ErrorPaymailNotFound, "paymail not found", http.StatusNotFound)
 		return
 	}
 
 	// Return the response
 	apirouter.ReturnResponse(w, req, http.StatusOK, &paymail.AuthenticationPayload{
-		BsvAlias:               c.BSVAliasVersion,
-		Handle:                 address,
-		AuthenticationEndpoint: foundPaymail.AuthenticationURL,
+		BsvAlias:          c.BSVAliasVersion,
+		Handle:            address,
+		AuthenticationURL: authInfo.AuthenticationURL,
 	})
 }

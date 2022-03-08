@@ -10,21 +10,22 @@ import (
 
 // Error codes for server response errors
 const (
-	ErrorFindingPaymail      = "error-finding-paymail"
-	ErrorInvalidDt           = "invalid-dt"
-	ErrorInvalidParameter    = "invalid-parameter"
-	ErrorInvalidPubKey       = "invalid-pubkey"
-	ErrorInvalidSenderHandle = "invalid-sender-handle"
-	ErrorInvalidSignature    = "invalid-signature"
-	ErrorMethodNotFound      = "method-405"
-	ErrorMissingHex          = "missing-hex"
-	ErrorMissingReference    = "missing-reference"
-	ErrorMissingSatoshis     = "missing-satoshis"
-	ErrorPaymailNotFound     = "not-found"
-	ErrorRecordingTx         = "error-recording-tx"
-	ErrorRequestNotFound     = "request-404"
-	ErrorScript              = "script-error"
-	ErrorUnknownDomain       = "unknown-domain"
+	ErrorFindingPaymail           = "error-finding-paymail"
+	ErrorGettingAuthenticationUrl = "error-getting-auth-url"
+	ErrorInvalidDt                = "invalid-dt"
+	ErrorInvalidParameter         = "invalid-parameter"
+	ErrorInvalidPubKey            = "invalid-pubkey"
+	ErrorInvalidSenderHandle      = "invalid-sender-handle"
+	ErrorInvalidSignature         = "invalid-signature"
+	ErrorMethodNotFound           = "method-405"
+	ErrorMissingHex               = "missing-hex"
+	ErrorMissingReference         = "missing-reference"
+	ErrorMissingSatoshis          = "missing-satoshis"
+	ErrorPaymailNotFound          = "not-found"
+	ErrorRecordingTx              = "error-recording-tx"
+	ErrorRequestNotFound          = "request-404"
+	ErrorScript                   = "script-error"
+	ErrorUnknownDomain            = "unknown-domain"
 )
 
 var (

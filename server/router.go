@@ -112,4 +112,10 @@ func (c *Configuration) registerPaymailRoutes(router *apirouter.Router) {
 		"/"+c.APIVersion+"/"+c.ServiceName+"/receive-transaction/:paymailAddress",
 		router.Request(c.p2pReceiveTx),
 	)
+
+	//
+	router.HTTPRouter.GET(
+		"/"+c.APIVersion+"/"+c.ServiceName+"/id/:paymailAddress/authentication",
+		router.Request(c.getAuthenticationEndpoint),
+	)
 }
