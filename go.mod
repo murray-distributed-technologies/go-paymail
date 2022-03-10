@@ -1,4 +1,4 @@
-module github.com/tonicpow/go-paymail
+module github.com/murray-distributed-technologies/go-paymail
 
 go 1.16
 
